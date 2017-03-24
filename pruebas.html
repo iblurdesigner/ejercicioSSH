@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Curso de React</title>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.23.1/babel.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+  <script type="text/babel">
+    function Hola(props){
+      const name = props.name;
+
+      return (
+        <h1 id="Title" onClick={props.onClick}>
+          Hola {props.name} {props.count}
+        </h1>
+      );
+    }
+
+    class MiComponente extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = {
+          count: 0,
+        };
+
+        this.handleClick = this.handleClick.bind(this);
+      }
+
+      handleClick(){
+        this.setState ({
+          count: this.state.count + 1,
+        });
+      }
+
+
+      render() {
+        const name = this.props.name;
+        return (
+          <h1 id="Title" onClick={this.handleClick}>
+            Hola {name} {this.state.count}
+          </h1>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <MiComponente name="Blur"/>,
+      document.getElementById('app')
+    );
+  </script>
+</body>
+</html>
